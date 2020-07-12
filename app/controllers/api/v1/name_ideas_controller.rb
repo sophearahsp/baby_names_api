@@ -6,6 +6,11 @@ class Api::V1::NameIdeasController < ApplicationController
         render json: @name_ideas
     end
 
+    def show
+        @name = NameIdea.find(params[:id])
+        render json: @name
+    end
+
     #POST /url_identificiations/#url_identification_id/name_ideas
     def create
         @newName = NameIdea.new(name_params)
@@ -16,9 +21,17 @@ class Api::V1::NameIdeasController < ApplicationController
         end
     end
 
+    # patch strikethrough
+
+    def update
+        @name = NameIdea.find(params[:id])
+        @name.update_attributes(name_params)
+        render json:@name
+    end
+
     private
 
     def name_params
-        params.require(:name_idea).permit(:name, :url_identification_id)
+        params.require(:name_idea).permit(:name, :url_identification_id, :strikethrough)
     end
 end
