@@ -6,6 +6,7 @@ class Api::V1::NameIdeasController < ApplicationController
         render json: @name_ideas
     end
 
+    #GET /url_identificiations/#url_identification_id/name_ideas/#name_idea_id
     def show
         @name = NameIdea.find(params[:id])
         render json: @name
@@ -21,8 +22,7 @@ class Api::V1::NameIdeasController < ApplicationController
         end
     end
 
-    # patch strikethrough
-
+    #PATCH /url_identificiations/#url_identification_id/name_ideas/#name_idea_id
     def update
         @name = NameIdea.find(params[:id])
         @name.update_attributes(name_params)

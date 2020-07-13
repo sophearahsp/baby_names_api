@@ -37,10 +37,9 @@ module BabyNamesApi
     
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
+        origins 'http://localhost:3000' #'https://admiring-cray-cf415a.netlify.app'
         resource '*', :headers => :any, :methods => [:get, :post, :patch, :delete, :options]
       end
     end
-
   end
 end
